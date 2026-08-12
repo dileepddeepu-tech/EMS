@@ -22,3 +22,7 @@ env/
 *.njsproj
 *.sln
 *.sw?
+
+# Collected static files
+staticfiles/
+

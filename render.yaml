@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: ems-django
+    runtime: python
+    buildCommand: ./build.sh
+    startCommand: gunicorn --chdir ems ems.wsgi:application
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: DJANGO_SETTINGS_MODULE
+        value: ems.settings
+      - key: RENDER
+        value: "True"
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+    disk:
+      name: ems-db
+      mountPath: /data
+      sizeGB: 1
